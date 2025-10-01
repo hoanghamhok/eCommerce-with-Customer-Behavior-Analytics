@@ -11,7 +11,7 @@ export default function HomePage() {
   ]
 
   return (
-    <div>
+    <div className ="bg-white">
       {/* Hero Banner */}
       <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
         <div className="container mx-auto px-4">
@@ -29,7 +29,7 @@ export default function HomePage() {
       {/* Featured Products */}
       <section className="container mx-auto px-4 py-12">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold">Sản phẩm nổi bật</h2>
+          <h2 className="text-3xl font-bold text-red-500">Sản phẩm nổi bật</h2>
           <Link href="/products" className="text-blue-600 hover:underline">
             Xem tất cả →
           </Link>
@@ -45,7 +45,7 @@ export default function HomePage() {
       {/* Categories */}
       <section className="bg-white py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Danh mục sản phẩm</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center text-red-500">Danh mục sản phẩm</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {['Điện thoại', 'Laptop', 'Tablet', 'Phụ kiện'].map((category) => (
               <Link 
@@ -53,7 +53,7 @@ export default function HomePage() {
                 href="/products"
                 className="bg-gray-100 p-8 rounded-lg text-center hover:bg-gray-200 transition"
               >
-                <h3 className="font-semibold text-lg">{category}</h3>
+                <h3 className="font-semibold text-lg text-black">{category}</h3>
               </Link>
             ))}
           </div>

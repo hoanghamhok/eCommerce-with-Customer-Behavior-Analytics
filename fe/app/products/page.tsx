@@ -28,7 +28,7 @@ export default function ProductsPage() {
     : products.filter(p => p.category === selectedCategory)
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 text-blue-600" >
       <h1 className="text-3xl font-bold mb-8">Sản phẩm</h1>
       
       <div className="flex gap-8">

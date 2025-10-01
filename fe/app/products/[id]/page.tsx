@@ -1,15 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, use } from 'react'
 import { ShoppingCart, Heart, Share2 } from 'lucide-react'
 import Link from 'next/link'
+import * as React from 'react'
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const [quantity, setQuantity] = useState(1)
+export default function Page({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = use(params); // unwrap Promise
+  const { id } = resolvedParams;
+  const [quantity, setQuantity] = useState(1);
 
   // Sample data - sẽ fetch từ API
   const product = {
-    id: params.id,
+    id,
     name: 'iPhone 15 Pro Max',
     price: 29000000,
     description: 'iPhone 15 Pro Max với chip A17 Pro mạnh mẽ, camera 48MP chuyên nghiệp, màn hình Super Retina XDR 6.7 inch và khung titan cao cấp.',
@@ -22,14 +25,14 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
     ],
     images: ['', '', ''],
     category: 'Điện thoại'
-  }
+  };
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('vi-VN', {
       style: 'currency',
       currency: 'VND'
-    }).format(price)
-  }
+    }).format(price);
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -58,8 +61,8 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         </div>
 
         {/* Product Info */}
-        <div>
-          <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
+        <div className='text-black'>
+          <h1 className="text-3xl font-bold mb-4 text-black">{product.name}</h1>
           
           <div className="flex items-center gap-4 mb-6">
             <span className="text-3xl font-bold text-blue-600">
@@ -141,5 +144,5 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         </div>
       </div>
     </div>
-  )
+  );
 }
