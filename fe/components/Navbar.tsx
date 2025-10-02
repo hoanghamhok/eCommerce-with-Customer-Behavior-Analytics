@@ -43,12 +43,12 @@ export default function Navbar() {
 
           {/* Icons + Auth */}
           <div className="flex items-center gap-4">
-            <button className="hover:text-blue-600 transition relative">
+            <Link href="/carts" className="hover:text-blue-600 transition relative">
               <ShoppingCart size={24} />
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 0
               </span>
-            </button>
+            </Link>
             <button className="hover:text-blue-600 transition">
               <User size={24} />
             </button>
