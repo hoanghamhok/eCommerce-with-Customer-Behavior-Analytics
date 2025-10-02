@@ -18,6 +18,7 @@ obj/
 *.vscode/
 *.vs/
 *.swp
+appsettings.json  
 
 # Rider / JetBrains
 .idea/

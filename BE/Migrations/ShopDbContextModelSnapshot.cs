@@ -122,7 +122,7 @@ namespace BE.Migrations
 
                     b.HasIndex("Name", "Ts");
 
-                    b.ToTable("EventRaw");
+                    b.ToTable("EventRaws");
                 });
 
             modelBuilder.Entity("BE.Models.Order", b =>
@@ -384,7 +384,7 @@ namespace BE.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("UserFeature");
+                    b.ToTable("UserFeatures");
                 });
 
             modelBuilder.Entity("BE.Models.UserPropensity", b =>
@@ -405,7 +405,7 @@ namespace BE.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("UserPropensity");
+                    b.ToTable("UserPropensities");
                 });
 
             modelBuilder.Entity("BE.Models.UserRecommendation", b =>
@@ -432,7 +432,7 @@ namespace BE.Migrations
 
                     b.HasIndex("UserId", "Score");
 
-                    b.ToTable("UserRecommendation");
+                    b.ToTable("UserRecommendations");
                 });
 
             modelBuilder.Entity("BE.Models.Wishlist", b =>
