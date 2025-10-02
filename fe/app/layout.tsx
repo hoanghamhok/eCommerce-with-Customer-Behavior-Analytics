@@ -1,34 +1,26 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import './globals.css'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Trang thương mại điện tử với phân tích hành vi khách hàng",
-  description: "Website bán hàng Next.js + ASP.NET Core + SQL Server",
-};
+export const metadata = {
+  title: 'E-commerce Store',
+  description: 'Cửa hàng thương mại điện tử',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="vi">
+      <body>
+        <Navbar />
+        <main className="min-h-screen bg-gray-50">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
-  );
+  )
 }
