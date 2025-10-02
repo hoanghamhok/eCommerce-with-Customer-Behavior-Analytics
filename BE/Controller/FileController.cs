@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-
+using BE.Models.DTOs;
 [ApiController]
 [Route("api/files")]
 public class FileController : ControllerBase
@@ -11,9 +11,11 @@ public class FileController : ControllerBase
     }
 
     [HttpPost("upload")]
-    public async Task<IActionResult> UploadImage([FromForm] IFormFile file)
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> UploadImage([FromForm] FileUploadDto dto)
     {
-        Console.WriteLine("WebRootPath: " + _env.WebRootPath);   
+        var file = dto.File;
+        Console.WriteLine("WebRootPath: " + _env.WebRootPath);
         if (file == null || file.Length == 0)
             return BadRequest("Không có tệp nào được tải lên.");
 
@@ -34,7 +36,7 @@ public class FileController : ControllerBase
 
         // Trả về URL của tệp đã tải lên
         var fileUrl = $"{Request.Scheme}://{Request.Host}/uploads/{fileName}";
-        return Ok (new { imageUrl = fileUrl });
+        return Ok(new { imageUrl = fileUrl });
     }
 
 }
