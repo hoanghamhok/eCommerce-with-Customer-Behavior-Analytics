@@ -1,10 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import ProductCard from '@/components/ProductCard'
 
 export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState('all')
+  const searchParams = useSearchParams()
+  const categoryFromUrl = searchParams.get('category') || 'all'
+  
+  const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl)
   
   const products = [
     { id: 1, name: 'iPhone 15 Pro Max', price: 29000000, category: 'phone', image: '' },
@@ -28,7 +32,7 @@ export default function ProductsPage() {
     : products.filter(p => p.category === selectedCategory)
 
   return (
-    <div className="container mx-auto px-4 py-8 text-blue-600" >
+    <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Sản phẩm</h1>
       
       <div className="flex gap-8">

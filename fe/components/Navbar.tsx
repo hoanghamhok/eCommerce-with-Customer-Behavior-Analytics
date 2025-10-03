@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Search, ShoppingCart, User, Menu } from 'lucide-react'
+import { Search, ShoppingCart, User, Menu, Heart } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Navbar() {
@@ -43,26 +43,37 @@ export default function Navbar() {
 
           {/* Icons + Auth */}
           <div className="flex items-center gap-4">
+            {/* Wishlist Icon */}
+            <Link href="/wishlist" className="hover:text-pink-600 transition relative">
+              <Heart size={24} />
+              <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                0
+              </span>
+            </Link>
+            
+            {/* Cart Icon */}
             <Link href="/carts" className="hover:text-blue-600 transition relative">
               <ShoppingCart size={24} />
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 0
               </span>
             </Link>
-            <button className="hover:text-blue-600 transition">
+
+           {/* User Icon */}
+            <Link href="/profile/1" className="hover:text-blue-600 transition hidden md:block">
               <User size={24} />
-            </button>
+            </Link>
 
             {/* Đăng nhập & Đăng ký */}
             <Link 
               href="/login" 
-              className="px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition"
+              className="hidden lg:block px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition"
             >
               Đăng nhập
             </Link>
             <Link 
               href="/register" 
-              className="px-4 py-2 rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-50 transition"
+              className="hidden lg:block px-4 py-2 rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-50 transition"
             >
               Đăng ký
             </Link>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BE.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace BE.Data;
 
@@ -34,6 +35,11 @@ public partial class ShopDbContext : DbContext
     public virtual DbSet<UserFeature> UserFeatures { get; set; }
     public virtual DbSet<UserRecommendation> UserRecommendations { get; set; }
     public virtual DbSet<UserPropensity> UserPropensities { get; set; }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.ConfigureWarnings(warnings => 
+            warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+    }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Order>(entity =>
